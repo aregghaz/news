@@ -1,0 +1,40 @@
+.registration_error {
+    color:red;
+}
+
+/* login dropdown menu */
+.dropdown-menu > li {
+    width: 100%;
+    text-align: center;
+}
+
+#dropdown_a{
+    margin: 0;
+    border: 0;
+}
+
+#image-size {
+    height: 55px!important;
+}
+
+.images_product_show {
+    max-height: 250px;
+    margin: 0 auto;
+}
+
+
+.demo_img{
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 15px;
+}
+.color_but {
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 760px) {
+    .wrapper {
+        overflow: initial!important;
+    }
+}
