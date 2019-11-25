@@ -15,14 +15,9 @@ Route::get('/', function () {
     return view('login');
 })->name('login');
 
-
 Route::post('/sing-in',  "HomeController@singIn")->name('singIn');
 
-
-
-
 Route::group(['prefix' => 'admin', 'middleware' => 'role'], function () {
-
     Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
     Route::get('/logOut', 'HomeController@logOut')->name('logOut');
     Route::resource('news', 'NewsController');
