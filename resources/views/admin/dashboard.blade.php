@@ -146,69 +146,7 @@
 
 
         </div>
-        <div class="row">
 
-            <div class="col-md-12">
-                <!-- Begin: life time stats -->
-                <div class="portlet light">
-                    <div class="portlet-title tabbable-line">
-                        <div class="caption">
-                            <i class="icon-share font-red-sunglo"></i>
-                            <span class="caption-subject font-red-sunglo bold uppercase">@lang('admin.revenue')</span>
-                            <span class="caption-helper">@lang('admin.weeklyStatus')...</span>
-                        </div>
-                        <ul class="nav nav-tabs">
-                            <li>
-                                <a href="#portlet_tab2" data-toggle="tab" id="statistics_amounts_tab">
-                                    @lang('admin.views') </a>
-                            </li>
-                            <li class="active">
-                                <a href="#portlet_tab1" data-toggle="tab">
-                                    @lang('admin.orders') </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="portlet_tab1">
-                                <div id="statistics_1" class="chart">
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="portlet_tab2">
-                                <div id="statistics_2" class="chart">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="well margin-top-10 no-margin no-border">
-                            <div class="row">
-                                <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
-										<span class="label label-success">
-										@lang('admin.revenue'): </span>
-                                    <h3></h3>
-                                </div>
-                                <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
-										<span class="label label-info">
-										@lang('admin.views') </span>
-                                    <h3></h3>
-                                </div>
-                                <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
-										<span class="label label-danger">
-										@lang('admin.price'): </span>
-                                    <h3>@lang('home.amd')</h3>
-                                </div>
-                                <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
-										<span class="label label-warning">
-										@lang('admin.orders'): </span>
-                                    <h3></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End: life time stats -->
-            </div>
-        </div>
-        <!-- END PAGE CONTENT-->
     </div>
 
 @endsection
