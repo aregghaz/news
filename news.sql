@@ -1,3 +1,11 @@
+--Login:: admin@admin.com
+--pass:: admin
+
+
+
+
+
+
 -- phpMyAdmin SQL Dump
 -- version 4.7.9
 -- https://www.phpmyadmin.net/

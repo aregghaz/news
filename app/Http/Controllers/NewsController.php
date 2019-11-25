@@ -124,7 +124,6 @@ class NewsController extends Controller
     {
         $category_id = $request->category;
         $slug = $request->slug;
-
         $validator =  Validator::make($request->all(), [
             'slug' => 'required|'.Rule::unique('news')->ignore($id)->where(function ($query) use ($slug, $category_id) {
                     return $query->where('slug', $slug)
@@ -141,7 +140,6 @@ class NewsController extends Controller
                 ->withInput();
         }
         $news = NewsTranslation::with('News')->where('id', $request->news_id)->first();
-
         $news->title = $request->title;
         $news->description = $request->description;
         $news->News->slug = $request->slug;
