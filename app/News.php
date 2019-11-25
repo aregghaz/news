@@ -17,6 +17,10 @@ class News extends Model
     {
         return $this->hasOne('App\NewsTranslation');
     }
+    public function Images()
+    {
+        return $this->hasOne('App\Images');
+    }
 
     public function Categories()
     {

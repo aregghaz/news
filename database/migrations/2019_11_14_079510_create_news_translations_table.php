@@ -18,7 +18,6 @@ class CreateNewsTranslationsTable extends Migration
             $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->integer('news_id')->unsigned();
-
             $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
             $table->integer('lang_id');
         });
