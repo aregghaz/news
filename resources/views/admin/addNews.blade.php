@@ -92,6 +92,13 @@
                                             </label>
                                             <input class="form-control" name="slug" required/>
                                         </div>
+                                        <div class="col-sm-12 mt20">
+                                            <label class="control-label">
+                                                @lang("admin.images")
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <input class="form-control" name="upload_file[]" type="file" multiple  required/>
+                                        </div>
 
 
                                         <div class="col-sm-12 mt20">

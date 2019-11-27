@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Categories;
+use App\Images;
 use App\Lang;
 use App\News;
 use App\NewsTranslation;
@@ -56,11 +57,14 @@ class NewsController extends Controller
     {
         $category_id = $request['category_id'];
         $slug = $request['slug'];
+
         $validator =  Validator::make($request->all(), [
                 'slug' => 'required|' .Rule::unique('news')->where(function ($query) use ($slug, $category_id) {
                     return $query->where('slug', $slug)
                         ->where('category_id', $category_id);
                 }),
+                'upload_file.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+
                 'category_id' => 'required',
             ]);
         if ($validator->fails()) {
@@ -68,10 +72,24 @@ class NewsController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
         $news = new News();
         $news->slug = $request['slug'];
         $news->category_id = $request['category_id'];
         $news->save();
+
+        $count = 1;
+        foreach ($request->file('upload_file') as $image) {
+            $filename = time() +$count . '.jpg';
+            $images = new Images();
+            $images->name = $filename;
+            $images->news_id = $news->id;
+            $images->save();
+            $count++;
+            $image->move(public_path() . '/images/news', $filename);
+
+        }
+
         $lang = Lang::all();
         foreach ($lang as $key) {
             $reqName = $request[$key->name];
@@ -98,7 +116,7 @@ class NewsController extends Controller
     {
         $lang = Session::get('applocale');
         $lang = Lang::where('name', $lang)->value('id');
-        $data['news'] = NewsTranslation::with('News.Categories', 'Lang')->where(['lang_id'=>$lang,'id'=>$request->id])->first();
+        $data['news'] = NewsTranslation::with('News.Categories', 'Lang','News.Images')->where(['lang_id'=>$lang,'id'=>$request->id])->first();
         return json_encode($data);
     }
 
@@ -134,7 +152,6 @@ class NewsController extends Controller
             'title' => 'required|max:255',
         ]);
         if ($validator->fails()) {
-
             return redirect(route('news.index'))
                 ->withErrors($validator)
                 ->withInput();
@@ -145,6 +162,17 @@ class NewsController extends Controller
         $news->News->slug = $request->slug;
         $news->News->category_id = $request->category;
         $news->push();
+        $count = 1;
+        foreach ($request->file('upload_file') as $image) {
+            $filename = time() +$count . '.jpg';
+            $images = new Images();
+            $images->name = $filename;
+            $images->news_id = $id;
+            $images->save();
+            $count++;
+            $image->move(public_path() . '/images/news', $filename);
+
+        }
         session(['editproduct' => __('admin.edit')]);
         return redirect()->back();
     }

@@ -1,5 +1,10 @@
 @extends("layouts.admin")
 @section('content')
+    <style>
+        .tab-content{
+            margin-bottom: 20px;
+        }
+    </style>
     <div class="page-content">
         <!-- BEGIN PAGE CONTENT-->
         <div class="col-md-xs-12">
@@ -114,7 +119,18 @@
                         <div class="col-sm-12">
                             <h4><b>@lang('admin.description')</b> <hr> <span id="news_description"> </span></h4>
                         </div>
+                        <div class="col-sm-12">
+                            <h5><b>@lang('admin.images')</b></h5>
+                            <div class="inner-product-details-left">
+                                <div class="tab-content">
 
+                                </div>
+                                <hr>
+                                <ul class="demo_img list-inline">
+
+                                </ul>
+                            </div>
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -132,7 +148,7 @@
 
                     </div>
                     <div class="modal-body">
-                        <form action="" id="editeModal" method="post">
+                        <form action="" id="editeModal" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <input type="hidden" name="news_id" id="news_id">
@@ -163,7 +179,12 @@
                                 </select>
 
                             </div>
+                            <div class="myimg_edit col-xs-12">
+                                <label for="icon">@lang('admin.images'): <button onclick="fileFunctionedit()" class="btn btn-success btn-sm">+</button></label>
+                                <div id="forImages">
 
+                                </div>
+                            </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-success">@lang('admin.update')</button>
                                 <button type="button" class="btn btn-default"

@@ -19,7 +19,7 @@ class News extends Model
     }
     public function Images()
     {
-        return $this->hasOne('App\Images');
+        return $this->hasMany('App\Images');
     }
 
     public function Categories()

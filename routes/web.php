@@ -19,6 +19,7 @@ Route::post('/sing-in',  "HomeController@singIn")->name('singIn');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'role'], function () {
     Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
+    Route::get('/deleteImage', 'AdminController@deleteImage')->name('deleteImage');
     Route::get('/logOut', 'HomeController@logOut')->name('logOut');
     Route::resource('news', 'NewsController');
 });
